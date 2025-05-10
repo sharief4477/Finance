@@ -1,6 +1,54 @@
 <mvc:View controllerName="cpapp.finance.controller.Home"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-    </Page>
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt">
+	<App id="myApp">
+	<SplitApp id="splitApp">
+      <masterPages>
+        <Page showHeader="false">
+  	<tnt:SideNavigation id="sideNavigation" selectedKey="Bonds" expanded="true" itemPress="onItemPress">
+			<tnt:NavigationList>
+				<tnt:NavigationListItem text="Home" icon="sap-icon://home" />
+				<tnt:NavigationListGroup text="Assets">
+					<tnt:NavigationListItem text="Equity" icon="sap-icon://opportunity" >
+						<tnt:NavigationListItem id="STOCKS" text="Stocks" />
+						<tnt:NavigationListItem text="Mutual Funds" id="Funds" />
+					</tnt:NavigationListItem>
+					<tnt:NavigationListItem text="Fixed" icon="sap-icon://grid" >
+						<tnt:NavigationListItem text="Fixed Deposits" />
+						<tnt:NavigationListItem text="Bonds" id="Bonds" />
+					</tnt:NavigationListItem>
+				</tnt:NavigationListGroup>
+					<tnt:NavigationListGroup text="Liabilities">
+					<tnt:NavigationListItem text="Loans" icon="sap-icon://loan" >
+						<tnt:NavigationListItem text="Consumer Loans" />
+						<tnt:NavigationListItem text="Personal Loan" />
+						<tnt:NavigationListItem text="Car Loan" />
+						<tnt:NavigationListItem text="Home Loan" />
+					</tnt:NavigationListItem>
+						<tnt:NavigationListItem text="Credit Card" icon="sap-icon://credit-card" />
+				</tnt:NavigationListGroup>
+			</tnt:NavigationList>
+			<tnt:fixedItem>
+				<tnt:NavigationList>
+					<tnt:NavigationListItem selectable="false" href="https://sap.com" target="_blank" text="Contact Support" icon="sap-icon://headset" />
+				</tnt:NavigationList>
+			</tnt:fixedItem>
+		</tnt:SideNavigation>
+	  </Page>
+      </masterPages>
+
+	     <detailPages>
+        <Page id="defaultDetail" title="Home">
+          <Text text="Home Dashboard" />
+        </Page>
+        <mvc:XMLView viewName="cpapp.finance.view.Funds" id="mutualFundsView"/>
+        <mvc:XMLView viewName="cpapp.finance.view.FixedDeposit" id="FDView"/>
+      </detailPages>
+	  </SplitApp>
+
+
+
+
+</App>
 </mvc:View>
