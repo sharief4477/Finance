@@ -1,7 +1,85 @@
 <mvc:View controllerName="cpapp.finance.controller.FixedDeposit"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m"
+    xmlns="sap.m" 	xmlns:f="sap.f" xmlns:layout="sap.ui.layout" height="100%"
     >
+	<f:DynamicPage id="dynamicPageId" >
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:actions>
+						<Button
+								text="Create"
+								type="Emphasized"
+								press="toggleAreaPriority"/>
+						
+						
+					</f:actions>
+					<f:navigationActions>
+						<Button
+								icon="sap-icon://full-screen"
+								type="Transparent" />
+						<Button
+								icon="sap-icon://decline"
+								type="Transparent" />
+					</f:navigationActions>
+				</f:DynamicPageTitle>
+			</f:title>
+			<!-- DynamicPage Header -->
+			<f:header>
+				<f:DynamicPageHeader pinnable="true">
+					<layout:HorizontalLayout allowWrapping="true">
+						<layout:VerticalLayout class="sapUiMediumMarginEnd">
+							<ObjectAttribute title="Location" text="Warehouse A"/>
+							<ObjectAttribute title="Halway" text="23L"/>
+							<ObjectAttribute title="Rack" text="34"/>
+						</layout:VerticalLayout>
 
+						<layout:VerticalLayout>
+							<ObjectAttribute title="Availability"/>
+							<ObjectStatus text="In Stock" state="Success" />
+						</layout:VerticalLayout>
+					</layout:HorizontalLayout>
+				</f:DynamicPageHeader>
+			</f:header>
+			<f:content>
+			<Table 
+    id="idDepositTable"
+    sticky="HeaderToolbar,ColumnHeaders"
+    inset="false"
+    class="sapFDynamicPageAlignContent"
+    width="auto">
+    
+    <headerToolbar>
+        <Toolbar>
+            <Title text="Fixed Deposit" level="H2"/>
+        </Toolbar>
+    </headerToolbar>
+
+    <columns>
+        <Column width="12em">
+            <Text text="Name" />
+        </Column>
+        <Column minScreenWidth="Tablet" demandPopin="true">
+            <Text text="Bank" />
+        </Column>
+        <Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+            <Text text="Deposit Date" />
+        </Column>
+        <Column hAlign="End">
+            <Text text="AMOUNT" />
+        </Column>
+    </columns>
+
+</Table>
+
+			</f:content>
+			<!-- DynamicPage Footer -->
+			<f:footer>
+				<OverflowToolbar>
+					<ToolbarSpacer/>
+					<Button type="Accept" text="Accept"/>
+					<Button type="Reject" text="Reject"/>
+				</OverflowToolbar>
+			</f:footer>
+		</f:DynamicPage>
 
 </mvc:View>

@@ -6,6 +6,14 @@ sap.ui.define([
     return Controller.extend("cpapp.finance.controller.Home", {
         onInit() {
             this.oSplitApp = this.byId("splitApp");
+            const urlParams = new URLSearchParams(window.location.hash.split('?')[1]);
+            this.UserId = urlParams.get("userId");
+        if(!this.UserId){
+            this.UserId ='ShariefAhamed';
+        }
+        },
+        onAfterRendering(){
+            
         },
 
         //#region Events
